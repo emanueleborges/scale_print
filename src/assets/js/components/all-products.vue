@@ -7,6 +7,30 @@
         <div class="form-group">
             <input type="text" name="search" v-model="productSearch" placeholder="Search Serial" class="form-control" v-on:keyup="searchProducts">
         </div>
+
+
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                
+                    <div id="printMe" style="background:red;">
+                        <p>葫芦娃，葫芦娃</p>
+                        <p>一根藤上七朵花 </p>
+                        <p>小小树藤是我家 啦啦啦啦 </p>
+                        <p>叮当当咚咚当当　浇不大</p>
+                        <p> 叮当当咚咚当当 是我家</p>
+                        <p> 啦啦啦啦</p>
+                        <p>...</p>
+                    </div>
+
+                 <button v-print="'#printMe'">Print local range</button>
+                    
+                    
+                </div>
+                </div>
+            </div>
+
         <table class="table table-hover">
             <thead>
             <tr>
@@ -14,20 +38,22 @@
                 <td>SERIAL</td>
                 <td>NOTA_FISCAL</td>
                 <td>LAST_UPD</td>
-                <!--td>Actions</td-->
+                <td>Actions</td>
             </tr>
             </thead>
 
             <tbody>
+                
                 <tr v-for="product in products">
                     <td>{{ product.ID }}</td>
                     <td>{{ product.SERIAL }}</td>
                     <td>{{ product.NOTA_FISCAL }}</td>
                     <td>{{ product.LAST_UPD }}</td>
-                    <!--td>
-                        <router-link :to="{name: 'edit_product', params: { id: product.id }}" class="btn btn-primary">Edit</router-link>
-                        <router-link :to="{name: 'delete_product', params: { id: product.id }}" class="btn btn-danger">Delete</router-link>
-                    </td-->
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            Print
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
