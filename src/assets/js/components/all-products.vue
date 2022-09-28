@@ -7,30 +7,7 @@
         <div class="form-group">
             <input type="text" name="search" v-model="productSearch" placeholder="Search Serial" class="form-control" v-on:keyup="searchProducts">
         </div>
-
-
-            <!-- The Modal -->
-            <div class="modal" id="myModal">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                
-                    <div id="printMe" style="background:red;">
-                        <p>葫芦娃，葫芦娃</p>
-                        <p>一根藤上七朵花 </p>
-                        <p>小小树藤是我家 啦啦啦啦 </p>
-                        <p>叮当当咚咚当当　浇不大</p>
-                        <p> 叮当当咚咚当当 是我家</p>
-                        <p> 啦啦啦啦</p>
-                        <p>...</p>
-                    </div>
-
-                 <button v-print="'#printMe'">Print local range</button>
-                    
-                    
-                </div>
-                </div>
-            </div>
-
+   
         <table class="table table-hover">
             <thead>
             <tr>
@@ -42,18 +19,29 @@
             </tr>
             </thead>
 
-            <tbody>
-                
+            <tbody>              
                 <tr v-for="product in products">
                     <td>{{ product.ID }}</td>
                     <td>{{ product.SERIAL }}</td>
                     <td>{{ product.NOTA_FISCAL }}</td>
                     <td>{{ product.LAST_UPD }}</td>
                     <td>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" v-bind:data-target="'#myModal-'+product.ID">
                             Print
                         </button>
                     </td>
+
+                    <div class="modal" v-bind:id="'myModal-'+product.ID">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div id="printMe">
+                                <Detalhes v-bind:id="product.ID"></Detalhes>
+                                </div>
+                            <button v-print="'#printMe'">Print Label</button>  
+                            </div>
+                        </div>
+                    </div>
+
                 </tr>
             </tbody>
         </table>
@@ -62,7 +50,14 @@
 
 <script>
 
+import Detalhes from "./modal/Detalhes.vue";
+
     export default{
+
+        components: {
+            Detalhes
+        },
+
         data(){
             return{
                 products: [],
