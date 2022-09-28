@@ -1,9 +1,9 @@
 <template>
     <div id="all-products">
         <center>
-            <h1  class="text-primary">INVENTARIO - POS</h1>
+            <h1  class="text-primary">SCALE PRINTER</h1>
         </center>
-        <p><router-link :to="{ name: 'create_product' }" class="btn btn-primary">Cadastro Serial</router-link></p>
+        <Create/>
         <div class="form-group">
             <input type="text" name="search" v-model="productSearch" placeholder="Search Serial" class="form-control" v-on:keyup="searchProducts">
         </div>
@@ -13,7 +13,6 @@
             <tr>
                 <td>ID</td>
                 <td>WEIGHT</td>
-                <td>CARTON_NO</td>
                 <td>NOTA_FISCAL</td>
                 <td>LAST_UPD</td>
                 <td>Actions</td>
@@ -24,7 +23,6 @@
                 <tr v-for="product in products">
                     <td>{{ product.ID }}</td>
                     <td>{{ product.WEIGHT }}</td>
-                    <td>{{ product.CARTON_NO }}</td>
                     <td>{{ product.NOTA_FISCAL }}</td>
                     <td>{{ product.LAST_UPD }}</td>
                     <td>
@@ -52,11 +50,13 @@
 
 <script>
 
-import Detalhes from "./modal/Detalhes.vue";
+    import Create from "./create-product.vue";
+    import Detalhes from "./modal/Detalhes.vue";
 
     export default{
 
         components: {
+            Create,
             Detalhes
         },
 

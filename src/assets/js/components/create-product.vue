@@ -1,23 +1,13 @@
 <template>
     <div id="create-product" >
-        <center>
-            <h1  class="text-primary">CADASTRO</h1>
-        </center>
-        <p><router-link :to="{ name: 'all_products' }"  class="btn btn-primary">Voltar a Lista</router-link></p>
-        <hr />
-        <notification v-bind:notifications="notifications" class="alert alert-primary"></notification>
         <form v-on:submit.prevent="addProduct" id="form">
             <div class="form-group">
                 <label name="product_peso">WEIGHT</label>
                 <input type="text" name="WEIGHT" ref="WEIGHT" class="form-control" v-model="product.WEIGHT" autofocus maxlength="12" required /> 
             </div>
             <div class="form-group">
-                <label name="product_name">CARTON_NO</label>
-                <input type="text" name="CARTON_NO" ref="CARTON_NO" class="form-control" v-model="product.CARTON_NO" maxlength="12" required /> 
-            </div>
-            <div class="form-group">
-                <label name="product_price">NOTA_FISCAL</label>
-                <input type="text" name="NOTA_FISCAL" ref="NOTA_FISCAL"  class="form-control" v-model="product.NOTA_FISCAL"  maxlength="12" required> 
+                <label name="product_price">NOTA FISCAL</label>
+                <input type="text" name="NOTA_FISCAL" ref="NOTA_FISCAL"  class="form-control" v-model="product.NOTA_FISCAL"  maxlength="12" > 
             </div>
             <div class="form-group">
                 <button class="btn btn-success">Salvar</button>
