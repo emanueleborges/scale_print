@@ -35,7 +35,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div id="printMe">
-                                <Detalhes v-bind:id="product.ID"></Detalhes>
+                                <Detalhes :parans="product.ID"></Detalhes>
                                 </div>
                             <button v-print="'#printMe'">Print Label</button>  
                             </div>
