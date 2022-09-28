@@ -1,25 +1,26 @@
 <template>
-    <div id="create-product">
+    <div id="create-product" >
         <center>
-            <h1  class="text-primary">CADASTRO DE SERIAL</h1>
+            <h1  class="text-primary">CADASTRO</h1>
         </center>
         <p><router-link :to="{ name: 'all_products' }"  class="btn btn-primary">Voltar a Lista</router-link></p>
         <hr />
         <notification v-bind:notifications="notifications" class="alert alert-primary"></notification>
         <form v-on:submit.prevent="addProduct" id="form">
             <div class="form-group">
+                <label name="product_peso">WEIGHT</label>
+                <input type="text" name="WEIGHT" ref="WEIGHT" class="form-control" v-model="product.WEIGHT" autofocus maxlength="12" required /> 
+            </div>
+            <div class="form-group">
+                <label name="product_name">CARTON_NO</label>
+                <input type="text" name="CARTON_NO" ref="CARTON_NO" class="form-control" v-model="product.CARTON_NO" maxlength="12" required /> 
+            </div>
+            <div class="form-group">
                 <label name="product_price">NOTA_FISCAL</label>
-                <input type="text" name="NOTA_FISCAL" ref="NOTA_FISCAL"  class="form-control" v-model="product.NOTA_FISCAL" maxlength="12" required> 
+                <input type="text" name="NOTA_FISCAL" ref="NOTA_FISCAL"  class="form-control" v-model="product.NOTA_FISCAL"  maxlength="12" required> 
             </div>
             <div class="form-group">
-                <label name="product_name">SERIAL</label>
-                <input type="number" name="SERIAL" ref="SERIAL" class="form-control" 
-                v-model="product.SERIAL"                  
-                @input="updateValue" 
-                autofocus maxlength="12" required /> 
-            </div>
-            <div class="form-group">
-                <button class="btn btn-success">Create</button>
+                <button class="btn btn-success">Salvar</button>
             </div>
         </form>
     </div>
@@ -45,7 +46,7 @@ import Notification from './notifications.vue';
            
             addProduct: function()
             {
-                this.$http.post('http://10.57.65.125:3011/insertInvetarioPOS', this.product, {
+                this.$http.post('http://10.57.72.121:3012/insertprint', this.product, {
                     headers : {
                         'Content-Type' : 'application/json'
                     }
@@ -55,15 +56,15 @@ import Notification from './notifications.vue';
                         type: response.body.msg ?  'danger' : 'success',
                         message: response.body.msg ?  response.body.msg  : response.body.message
                     });
-                    this.product.SERIAL = '';
-                    this.$refs.SERIAL.focus()
+                    this.product.WEIGHT = '';
+                    this.$refs.WEIGHT.focus()
                 }, (response) => {
                     this.notifications.push({
                         type: 'error',
                         message: response.body.msg
                     });
-                    this.product.SERIAL = '';       
-                    this.$refs.SERIAL.focus()
+                    this.product.WEIGHT = '';       
+                    this.$refs.WEIGHT.focus()
                 });
                 this.focused = true;
             },
@@ -71,7 +72,7 @@ import Notification from './notifications.vue';
                 this.focused = true
             },
             suggestTerms () {
-                if ( this.product.SERIAL.length >= 12 ){
+                if ( this.product.WEIGHT.length >= 12 ){
                     this.addProduct()
                 }
             },
