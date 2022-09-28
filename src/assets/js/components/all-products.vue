@@ -1,9 +1,9 @@
 <template>
     <div id="all-products">
         <center>
-            <h1  class="text-primary">SCALE PRINTER</h1>
+            <h1  class="text-primary">INVENTARIO - POS</h1>
         </center>
-        <Create/>
+        <p><router-link :to="{ name: 'create_product' }" class="btn btn-primary">Cadastro Serial</router-link></p>
         <div class="form-group">
             <input type="text" name="search" v-model="productSearch" placeholder="Search Serial" class="form-control" v-on:keyup="searchProducts">
         </div>
@@ -33,12 +33,13 @@
 
                     <div class="modal" v-bind:id="'myModal-'+product.ID">
                         <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div id="printMe">
-                                <Detalhes :parans="product.ID"></Detalhes>
-                                </div>
-                            <button v-print="'#printMe'">Print Label</button>  
+                        <div class="modal-content">
+                        
+                            <div id="printMe">
+                               <Detalhes :WEIGHT="product.WEIGHT" :NOTA_FISCAL="product.NOTA_FISCAL" :LAST_UPD="product.LAST_UPD"></Detalhes>
                             </div>
+                        <button v-print="'#printMe'">Print local range</button>  
+                        </div>
                         </div>
                     </div>
 
@@ -50,13 +51,11 @@
 
 <script>
 
-    import Create from "./create-product.vue";
-    import Detalhes from "./modal/Detalhes.vue";
+import Detalhes from "./modal/Detalhes.vue";
 
     export default{
 
         components: {
-            Create,
             Detalhes
         },
 
@@ -95,7 +94,7 @@
                 var searchedProducts = [];
                 for(var i = 0; i < this.originalProducts.length; i++)
                 {
-                    var productName = this.originalProducts[i]['ID'].toLowerCase();
+                    var productName = this.originalProducts[i]['SERIAL'].toLowerCase();
                     if(productName.indexOf(this.productSearch.toLowerCase()) >= 0)
                     {
                         searchedProducts.push(this.originalProducts[i]);
