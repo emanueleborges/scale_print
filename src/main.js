@@ -1,10 +1,16 @@
 import Vue from 'vue'
 
+import VModal from 'vue-js-modal'
+Vue.use(VModal)
+
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
+
+import Print from 'vue-print-nb'
+Vue.use(Print);
 
 import App from './App.vue'
 
