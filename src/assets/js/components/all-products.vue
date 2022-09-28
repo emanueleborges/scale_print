@@ -12,7 +12,8 @@
             <thead>
             <tr>
                 <td>ID</td>
-                <td>SERIAL</td>
+                <td>WEIGHT</td>
+                <td>CARTON_NO</td>
                 <td>NOTA_FISCAL</td>
                 <td>LAST_UPD</td>
                 <td>Actions</td>
@@ -22,7 +23,8 @@
             <tbody>              
                 <tr v-for="product in products">
                     <td>{{ product.ID }}</td>
-                    <td>{{ product.SERIAL }}</td>
+                    <td>{{ product.WEIGHT }}</td>
+                    <td>{{ product.CARTON_NO }}</td>
                     <td>{{ product.NOTA_FISCAL }}</td>
                     <td>{{ product.LAST_UPD }}</td>
                     <td>
@@ -93,7 +95,7 @@ import Detalhes from "./modal/Detalhes.vue";
                 var searchedProducts = [];
                 for(var i = 0; i < this.originalProducts.length; i++)
                 {
-                    var productName = this.originalProducts[i]['SERIAL'].toLowerCase();
+                    var productName = this.originalProducts[i]['ID'].toLowerCase();
                     if(productName.indexOf(this.productSearch.toLowerCase()) >= 0)
                     {
                         searchedProducts.push(this.originalProducts[i]);
