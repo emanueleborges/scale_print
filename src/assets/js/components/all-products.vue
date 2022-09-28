@@ -35,7 +35,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div id="printMe">
-                                <Detalhes :parans="product.ID"></Detalhes>
+                                    <Detalhes :WEIGHT="product.WEIGHT" :NOTA_FISCAL="product.NOTA_FISCAL" :LAST_UPD="product.LAST_UPD"></Detalhes>
                                 </div>
                             <button v-print="'#printMe'">Print Label</button>  
                             </div>

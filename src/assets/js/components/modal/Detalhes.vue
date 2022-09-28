@@ -1,17 +1,20 @@
 <template>
-      <div class="example-modal-content">
-       {{ parans }}
-      </div>
+  <div class="example-modal-content">
+   <center>
+    <h1>{{ WEIGHT }} KG</h1>
+    <h1>{{ NOTA_FISCAL }}</h1>
+    <h1>{{ LAST_UPD }}</h1>
+   </center>
+  </div>
 </template>
-  <script>
-  export default {
-    name: 'Detalhes.vue',
+<script>
+export default {
+name: 'Detalhes.vue',
 
-    props: {
-        parans: String,
-  }
-  }
-
-
-  
+props: {
+  WEIGHT: String,
+  NOTA_FISCAL: String,
+  LAST_UPD: String,
+}
+}
 </script>
