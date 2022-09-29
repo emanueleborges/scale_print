@@ -76,11 +76,12 @@
             </button>
           </td>
 
-          <div class="modal" v-bind:id="'myModal-' + product.ID">
-            <div class="modal-dialog">
-              <div class="modal-content">
+          <div class="modal fade bd-example-modal-xl" v-bind:id="'myModal-' + product.ID">
+           <div class="modal-dialog modal-xl">
+            <div class="modal-content">
                 <div id="printMe">
                   <Detalhes
+                    id="printMe"
                     :WEIGHT="product.WEIGHT"
                     :NOTA_FISCAL="product.NOTA_FISCAL"
                     :LAST_UPD="product.LAST_UPD"
@@ -90,6 +91,8 @@
               </div>
             </div>
           </div>
+
+
         </tr>
       </tbody>
     </table>
