@@ -103,6 +103,8 @@ import Notification from "./notifications.vue";
 export default {
   components: {
     Detalhes,
+    'notification': Notification,
+
   },
   data() {
     return {
@@ -131,6 +133,8 @@ export default {
             type: "success",
             message: "Registro Inserido com Sucesso",
           });
+          this.product.WEIGHT = '';
+          this.product.NOTA_FISCAL = '';
 
           this.fetchProductData();
         });
@@ -162,8 +166,6 @@ export default {
       this.products = searchedProducts;
     },
   },
-  components: {
-    'notification': Notification,
-  },
+  
 };
 </script>
