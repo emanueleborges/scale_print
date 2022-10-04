@@ -54,7 +54,7 @@ export default {
 
     addProduct: function () {
       this.$http
-        .post("http://10.57.72.121:3012/insertprint", this.product, {
+        .post("http://10.57.65.125:3012/insertprint", this.product, {
           headers: {
             "Content-Type": "application/json",
           },

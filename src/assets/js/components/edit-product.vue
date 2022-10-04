@@ -27,7 +27,7 @@
         methods: {
             getProduct: function()
             {
-                this.$http.get('http://10.57.72.121:3012/searchid/' + this.$route.params.id).then((response) => {
+                this.$http.get('http://10.57.65.125:3012/searchid/' + this.$route.params.id).then((response) => {
                     this.product = response.data;
                 }, (response) => {
                 });

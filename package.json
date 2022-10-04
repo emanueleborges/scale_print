@@ -4,8 +4,8 @@
   "author": "Paulund",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --host 10.57.72.121 --port 8086 --open --inline --hot",
-    "start": "cross-env NODE_ENV=development webpack-dev-server  --open --inline --hot",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --host 10.57.65.125 --port 8086 --open --inline --hot",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --host 10.57.65.125 --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {

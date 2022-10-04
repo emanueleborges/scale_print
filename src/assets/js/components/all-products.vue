@@ -127,7 +127,7 @@ export default {
     addProduct: function () {
       console.log(this.product);
       this.$http
-        .post("http://10.57.72.121:3012/insertprint", this.product, {
+        .post("http://10.57.65.125:3012/insertprint", this.product, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -144,7 +144,7 @@ export default {
         });
     },
     fetchProductData: function () {
-      this.$http.get("http://10.57.72.121:3012/testprint").then(
+      this.$http.get("http://10.57.65.125:3012/testprint").then(
         (response) => {
           this.products = response.body;
           this.originalProducts = this.products;
