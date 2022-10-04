@@ -1,93 +1,67 @@
 <template>
-    <div id="update-product">
-        <h1>Update Product</h1>
-
-        <p><router-link :to="{ name: 'all_products' }">Return to products</router-link></p>
-
-        <notification v-bind:notifications="notifications"></notification>
-
-        <form v-on:submit.prevent="editProduct">
-            <div class="form-group">
-                <label name="product_id">ID</label>
-                <input type="text" class="form-control" disabled v-model="product.id" id="product_id">
-            </div>
-
-            <div class="form-group">
-                <label name="product_name">Name</label>
-                <input type="text" class="form-control" v-model="product.name" id="product_name" required>
-            </div>
-
-            <div class="form-group">
-                <label name="product_price">Price</label>
-                <input type="text" class="form-control" v-model="product.price" id="product_price" required>
-            </div>
-
-            <div class="form-group">
-                <button class="btn btn-primary">Update</button>
-            </div>
-        </form>
+    <div class="example-modal-content">
+        <center>
+            <h1><b>Peso</b></h1>
+            <h1><b>{{ product[0].WEIGHT }}KG</b></h1>
+            <br />
+            <h2><b>Nota:{{ product[0].NOTA_FISCAL }}</b></h2>
+            <br /> <br />
+            <h3><b>{{ product[0].LAST_UPD }}</b></h3>
+            <br />
+   </center>
     </div>
 </template>
 
-<script>
-    import Notification from './notifications.vue';
 
+
+<script>
     export default{
         data(){
             return{
-                product:{},
-                notifications:[]
+                product:{}
             }
         },
-
         created: function(){
             this.getProduct();
         },
-
         methods: {
             getProduct: function()
-            {   
-                console.log(this.$route.params);
-                this.$http.get('http://10.57.65.125:3011/BuscarSerial/' + this.$route.params.id).then((response) => {
-                    this.product = response.body;
+            {
+                this.$http.get('http://10.57.72.121:3012/searchid/' + this.$route.params.id).then((response) => {
+                    this.product = response.data;
                 }, (response) => {
-
                 });
             },
-
-            editProduct: function()
-            {
-                // Validation
-                var price = parseFloat(this.product.price);
-                if(isNaN(price))
-                {
-                    this.notifications.push({
-                        type: 'danger',
-                        message: 'Price must be a number'
-                    });
-                    return false;
-                }
-
-                this.$http.patch('http://localhost:3000/api/product/edit/' + this.$route.params.id, this.product, {
-                    headers : {
-                        'Content-Type' : 'application/json'
-                    }
-                }).then((response) => {
-                    this.notifications.push({
-                        type: 'success',
-                        message: 'Product updated successfully'
-                    });
-                }, (response) => {
-                    this.notifications.push({
-                        type: 'error',
-                        message: 'Product not updated'
-                    });
-                });
-            }
+ 
         },
 
-        components: {
-            'notification' : Notification
-        }
     }
 </script>
+
+
+
+<style scoped>
+    /* ISO Paper Size */
+    @page {
+      size: A4 landscape;
+    }
+    
+    /* Size in mm */    
+    @page {
+      size: 100mm 200mm landscape;
+    }
+    
+    /* Size in inches */    
+    @page {
+      size: 4in 6in landscape;
+    }
+    h1 {
+      font-size: 100px;
+    }
+    h2 {
+      font-size: 90px;
+    }
+    h3 {
+      font-size: 80px;
+    }
+</style>

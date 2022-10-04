@@ -66,14 +66,15 @@
           <td>{{ product.NOTA_FISCAL }}</td>
           <td>{{ product.LAST_UPD }}</td>
           <td>
-            <button
+            <router-link :to="{name: 'edit_product', params: { id: product.ID }}" class="btn btn-primary" target='_blank'>Print</router-link>
+            <!-- <button
               type="button"
               class="btn btn-primary"
               data-toggle="modal"
               v-bind:data-target="'#myModal-' + product.ID"
             >
               Print
-            </button>
+            </button> -->
           </td>
 
           <div class="modal fade bd-example-modal-xl" v-bind:id="'myModal-' + product.ID">
